@@ -27,9 +27,6 @@ makeEnemy()
 displayStats()
 console.log("There is a total of 6 enemy and you will fight them in a row")
 console.log("Battle Initializing")
-let z=0
-const spaceBattle=()=>{
-
 while(enemyCount>0){
     makeEnemy()
     let battleInput=prompt(`Your current stats: HP=${yourHull} FP=${yourFirePower} HR=${yourAccuracy}. Enemy Stats: HP=${enemyHull} FP=${enemyFirePower} HR=${enemyAccuracy} and there is ${enemyCount} enemy left. Do you wish to attack or retreat.` )
@@ -79,8 +76,3 @@ while(enemyCount>0){
         enemyCount=0
     }  
 }
-if (z<10000){
-    setTimeout(spaceBattle,20)
-}
-}
-spaceBattle()

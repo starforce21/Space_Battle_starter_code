@@ -13,7 +13,7 @@ const battleLoop=()=>{
             }
             else {
                 console.log('Enemy survived and is attempting to fire at you')
-                if(didYouHit(enemyAccuracy)){
+                if(didYouHit(enemyAccuracy,YourDodge)){
                     console.log(`Enemy hit you for ${enemyFirePower}`)
                     dmgCalc()
                     if(yourHull<1){
@@ -24,7 +24,7 @@ const battleLoop=()=>{
         }
         else{
             console.log('You missed your shot. Enemy is attacking')
-            if(didYouHit(enemyAccuracy)){
+            if(didYouHit(enemyAccuracy,YourDodge)){
                 console.log(`Enemy hit you for ${enemyFirePower}`)
                 dmgCalc()
                 if(yourHull<1){
@@ -44,7 +44,13 @@ const battleLoop=()=>{
         console.log('Aliens Won');
         reset()
     }
-    makeEnemy()
+    if(enemyCount>1){
+        makeEnemy()
+    }
+    else{
+        makeBoss
+    }
+    
     displayStats()
 }
 const shieldRegen=()=>{
@@ -94,6 +100,15 @@ const spec=()=>{
     else
     console.log('No specs lefts')
 }
+const dodgeUp=()=>{
+    if(powerPoints>0){
+        YourDodge+=5
+        powerPoints--
+        displayStats()    
+        }
+        else
+        console.log('No pp lefts')
+}
 const dmgCalc=()=>{
     if(yourShield>enemyFirePower)
         yourShield-=enemyFirePower
@@ -111,18 +126,25 @@ const reset=()=>{
     level=1
     powerPoints=0
     specialAtk=3
+    YourDodge=10
 }
 const makeEnemy=()=>{
     enemyHull=Math.ceil(Math.random()*2*level+3)
     enemyFirePower=Math.ceil(Math.random()*2*level+2)
-    enemyAccuracy=Math.ceil((.7+(level/100))*100)
+    enemyAccuracy=Math.ceil((.75+(level/100))*100)
 }
-const didYouHit=(accuracy)=>{
-    if (Math.random()*100 < accuracy)
+const makeBoss=()=>{
+    enemyHull=35
+    enemyFirePower=18
+    enemyAccuracy=100
+    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("/images/mothership.gif")'
+}
+const didYouHit=(accuracy,dodge=0)=>{
+    if (Math.random()*100*((100+dodge)/100) < accuracy)
         return true
 }
 const displayStats=()=>{
-    yourStats.innerHTML=`Hull : ${yourHull} <br>FirePower : ${yourFirePower} <br>Accuracy : ${yourAccuracy} <br> Shield: ${yourShield}`
+    yourStats.innerHTML=`Hull : ${yourHull} <br>FirePower : ${yourFirePower} <br>Accuracy : ${yourAccuracy} <br> Shield: ${yourShield}<br> Dodge: ${YourDodge}`
     enemyStats.innerHTML=`Hull : ${enemyHull} <br>FirePower : ${enemyFirePower} <br>Accuracy : ${enemyAccuracy} <br>`
     document.getElementById('p1').innerHTML=`Enemy left=${enemyCount}`
     document.getElementById('powerPoints').innerHTML=`Power Points left=${powerPoints}`
@@ -142,6 +164,7 @@ button[1].addEventListener('click',heal)
 button[2].addEventListener('click',atkUp)
 button[3].addEventListener('click',accUp)
 button[4].addEventListener('click',spec)
+button[5].addEventListener('click',dodgeUp)
 reset()
 makeEnemy()
 displayStats()

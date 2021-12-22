@@ -19,6 +19,13 @@
     justify-content: center;
     align-items: center;
 }
+#powerPoints,#p1{
+    display: block;
+}
+.flexBox{
+    display: block;
+    align-items: center;
+}
 .mainCharacterView{
 
 width: 50%;
@@ -64,8 +71,8 @@ align-items: center;
     justify-content: center;
     align-items: center;
     border: 1px solidblack;
-    width: 15vw;
-    height: 15vh;
+    width: 20vw;
+    height: 20vh;
     text-align: center;
     font-size: 1.5em;
     box-shadow: 0px 0px 20px 10px white;
@@ -91,8 +98,8 @@ align-items: center;
     justify-content: center;
     align-items: center;
     border: 1px solidblack;
-    width: 15vw;
-    height: 15vh;
+    width: 17vw;
+    height: 17vh;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5em;

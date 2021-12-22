@@ -34,12 +34,6 @@ flex-direction: column;
 justify-content: space-around;
 align-items: center;
 }
-.left{
-
-}
-.right{
-    
-}
 
 .nameBox{
     border: 1px solid black;
@@ -57,7 +51,7 @@ align-items: center;
     border: 1px solidblack;
     width: 30vw;
     height: 40vh;
-    background-image: url("/images/space_hero.gif");
+    background-image: url("images/space_hero.gif");
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,7 +78,7 @@ align-items: center;
     border: 1px solidblack;
     width: 30vw;
     height: 35vh;
-    background-image: url("/images/enemy.gif");
+    background-image: url("images/enemy.gif");
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;

@@ -48,7 +48,8 @@ const battleLoop=()=>{
         makeEnemy()
     }
     else{
-        makeBoss
+        makeBoss()
+        console.log('Enemy Mothership approaching')
     }
     
     displayStats()
@@ -80,7 +81,7 @@ const accUp=()=>{
     if(powerPoints>0){
     yourAccuracy+=10
     powerPoints--
-    displayStats()    
+    displayStats()
     }
     else
     console.log('No pp lefts')
@@ -137,7 +138,7 @@ const makeBoss=()=>{
     enemyHull=35
     enemyFirePower=18
     enemyAccuracy=100
-    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("/images/mothership.gif")'
+    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("images/mothership.gif")'
 }
 const didYouHit=(accuracy,dodge=0)=>{
     if (Math.random()*100*((100+dodge)/100) < accuracy)

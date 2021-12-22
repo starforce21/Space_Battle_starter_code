@@ -7,7 +7,7 @@
     margin: 0 auto;
     font-family: 'Share Tech Mono', monospace;
     background-size: 100%;
-    background-color: black;
+    background-image: url("./images/space3.gif");
     color: white;
 }
 *{

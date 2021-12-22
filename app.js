@@ -138,7 +138,7 @@ const makeBoss=()=>{
     enemyHull=35
     enemyFirePower=18
     enemyAccuracy=100
-    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("images/mothership.gif")'
+    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("https://github.com/starforce21/Space_Battle_starter_code/blob/main/images/mothership.gif")'
 }
 const didYouHit=(accuracy,dodge=0)=>{
     if (Math.random()*100*((100+dodge)/100) < accuracy)

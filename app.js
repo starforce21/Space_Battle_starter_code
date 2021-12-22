@@ -51,7 +51,6 @@ const battleLoop=()=>{
         makeBoss()
         console.log('Enemy Mothership approaching')
     }
-    
     displayStats()
 }
 const shieldRegen=()=>{
@@ -128,6 +127,8 @@ const reset=()=>{
     powerPoints=0
     specialAtk=3
     YourDodge=10
+    document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("./images/phoenix.gif")'
+    document.getElementsByClassName('bodyContainer')[0].style.backgroundImage='url("./images/space3.gif")'
 }
 const makeEnemy=()=>{
     enemyHull=Math.ceil(Math.random()*2*level+3)
@@ -138,6 +139,7 @@ const makeBoss=()=>{
     enemyHull=35
     enemyFirePower=18
     enemyAccuracy=100
+    document.getElementsByClassName('nameBox')[1].innerHTML='Mothership'
     document.getElementsByClassName('enemyImage')[0].style.backgroundImage='url("./images/mothership.gif")'
     document.getElementsByClassName('bodyContainer')[0].style.backgroundImage='url("./images/space2.gif")'
 }

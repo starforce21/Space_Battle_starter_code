@@ -2,16 +2,11 @@ const battleLoop=()=>{
     var newLine='\r\n'
     var msg=`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`
     while(enemyHull>0 && yourHull>0){
-        // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
         if(didYouHit(yourAccuracy)){
             enemyHull-=yourFirePower
-            // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
             msg += newLine
             msg+=`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`
             if(enemyHull<1){
-                // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
-                // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
-                // alert('Enemy is dead, You gain one pp')
                 msg += newLine
                 msg+='Enemy is dead, You gain one pp'
                 alert(msg)
@@ -21,20 +16,13 @@ const battleLoop=()=>{
                 enemyCount--
             }
             else {
-                // alert('Enemy survived and is attempting to fire at you')
                 msg += newLine
                 msg+='Enemy survived and is attempting to fire at you'
                 if(didYouHit(enemyAccuracy,YourDodge)){
-                    // alert(`Enemy hit you for ${enemyFirePower}`)
                     msg += newLine
                     msg+=`Enemy hit you for ${enemyFirePower}`
                     dmgCalc()
                     if(yourHull<1){
-                        // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
-                        // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
-                        // alert('Enemy survived and is attempting to fire at you')
-                        // alert(`Enemy hit you for ${enemyFirePower}`)
-                        // alert('Enemy breached your hull and you are dead')
                         msg += newLine
                         msg+='Enemy breached your hull and you are dead'
                         alert(msg)
@@ -43,28 +31,19 @@ const battleLoop=()=>{
             }    
         }
         else{
-            // alert('You missed your shot. Enemy is attacking')
             msg += newLine
             msg+='You missed your shot. Enemy is attacking'
             if(didYouHit(enemyAccuracy,YourDodge)){
-                // alert(`Enemy hit you for ${enemyFirePower}`)
                 msg += newLine
                 msg+=`Enemy hit you for ${enemyFirePower}`
                 dmgCalc()
                 if(yourHull<1){
-                    // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
-                    // alert('You missed your shot. Enemy is attacking')
-                    // alert(`Enemy hit you for ${enemyFirePower}`)
-                    // alert('Enemy breached your hull and you are dead')
                     msg += newLine
                     msg+='Enemy breached your hull and you are dead'
                     alert(msg)
                 }
             }
             else{
-                // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
-                // alert('You missed your shot. Enemy is attacking')
-                // alert('Enemy missed you')
                 msg += newLine
                 msg+='Enemy missed you'
                 alert(msg)

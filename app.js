@@ -1,47 +1,82 @@
 const battleLoop=()=>{
+    var newLine='\r\n'
+    var msg=`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`
     while(enemyHull>0 && yourHull>0){
-        console.log(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
+        // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
         if(didYouHit(yourAccuracy)){
             enemyHull-=yourFirePower
-            console.log(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
+            // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
+            msg += newLine
+            msg+=`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`
             if(enemyHull<1){
-                console.log('Enemy is dead, You gain one pp')
+                // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
+                // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
+                // alert('Enemy is dead, You gain one pp')
+                msg += newLine
+                msg+='Enemy is dead, You gain one pp'
+                alert(msg)
                 shieldRegen()
                 powerPoints++
                 level++
                 enemyCount--
             }
             else {
-                console.log('Enemy survived and is attempting to fire at you')
+                // alert('Enemy survived and is attempting to fire at you')
+                msg += newLine
+                msg+='Enemy survived and is attempting to fire at you'
                 if(didYouHit(enemyAccuracy,YourDodge)){
-                    console.log(`Enemy hit you for ${enemyFirePower}`)
+                    // alert(`Enemy hit you for ${enemyFirePower}`)
+                    msg += newLine
+                    msg+=`Enemy hit you for ${enemyFirePower}`
                     dmgCalc()
                     if(yourHull<1){
-                        console.log('Enemy breached your hull and you are dead')
+                        // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
+                        // alert(`You Hit and dealt ${yourFirePower}dmg. Enemy now have ${enemyHull}hp`)
+                        // alert('Enemy survived and is attempting to fire at you')
+                        // alert(`Enemy hit you for ${enemyFirePower}`)
+                        // alert('Enemy breached your hull and you are dead')
+                        msg += newLine
+                        msg+='Enemy breached your hull and you are dead'
+                        alert(msg)
                     }
                 }
             }    
         }
         else{
-            console.log('You missed your shot. Enemy is attacking')
+            // alert('You missed your shot. Enemy is attacking')
+            msg += newLine
+            msg+='You missed your shot. Enemy is attacking'
             if(didYouHit(enemyAccuracy,YourDodge)){
-                console.log(`Enemy hit you for ${enemyFirePower}`)
+                // alert(`Enemy hit you for ${enemyFirePower}`)
+                msg += newLine
+                msg+=`Enemy hit you for ${enemyFirePower}`
                 dmgCalc()
                 if(yourHull<1){
-                    console.log('Enemy breached your hull and you are dead')
+                    // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
+                    // alert('You missed your shot. Enemy is attacking')
+                    // alert(`Enemy hit you for ${enemyFirePower}`)
+                    // alert('Enemy breached your hull and you are dead')
+                    msg += newLine
+                    msg+='Enemy breached your hull and you are dead'
+                    alert(msg)
                 }
             }
             else{
-                console.log('Enemy missed you')
+                // alert(`Your current HP=${yourHull} and Shield=${yourShield}. Enemy current HP=${enemyHull}`)
+                // alert('You missed your shot. Enemy is attacking')
+                // alert('Enemy missed you')
+                msg += newLine
+                msg+='Enemy missed you'
+                alert(msg)
             }
         }
     }
     if (enemyCount==0){
-        console.log('You defeated the aliens and saved Earth')
+        alert('You defeated the aliens and saved Earth')
         reset()
     }
     if (yourHull<1){
-        console.log('Aliens Won');
+        alert('Aliens Won');
         reset()
     }
     if(enemyCount>1){
@@ -49,14 +84,14 @@ const battleLoop=()=>{
     }
     else{
         makeBoss()
-        console.log('Enemy Mothership approaching')
+        alert('Enemy Mothership approaching')
     }
     displayStats()
 }
 const shieldRegen=()=>{
     amountRegen=Math.ceil(Math.random()*2*level)
     yourShield+=amountRegen
-    console.log(`Shield battery activated, Your shield strength increased by ${amountRegen}.`)
+    alert(`Shield battery activated, Your shield strength increased by ${amountRegen}.`)
 }
 const heal=()=>{
     if(powerPoints>0){
@@ -65,7 +100,7 @@ const heal=()=>{
     displayStats()    
     }
     else
-    console.log('No pp lefts')
+    alert('No pp lefts')
 }
 const atkUp=()=>{
     if(powerPoints>0){
@@ -74,7 +109,7 @@ const atkUp=()=>{
     displayStats()    
     }
     else
-    console.log('No pp lefts')
+    alert('No pp lefts')
 }
 const accUp=()=>{
     if(powerPoints>0){
@@ -83,22 +118,22 @@ const accUp=()=>{
     displayStats()
     }
     else
-    console.log('No pp lefts')
+    alert('No pp lefts')
 }
 const spec=()=>{
     if(specialAtk>0){
-    console.log('Ima Firing Mah Lazer')
+    alert('Ima Firing Mah Lazer')
     specialAtk--
     enemyHull-=10
         if(enemyHull<1){
-            console.log('You killed the enemy with your lazer. You get no bonus for that')
+            alert('You killed the enemy with your lazer. You get no bonus for that')
             enemyCount--
             makeEnemy()
         }
     displayStats()
     }
     else
-    console.log('No specs lefts')
+    alert('No specs lefts')
 }
 const dodgeUp=()=>{
     if(powerPoints>0){
@@ -107,7 +142,7 @@ const dodgeUp=()=>{
         displayStats()    
         }
         else
-        console.log('No pp lefts')
+        alert('No pp lefts')
 }
 const dmgCalc=()=>{
     if(yourShield>enemyFirePower)
@@ -156,9 +191,9 @@ const displayStats=()=>{
 
 }
 function LoadingStatement() {
-    console.log(`Earth has been attacked by a horde of aliens! Time to fight back. Your ship's has ${yourHull} hull strength, ${yourFirePower} firepower and accuracy of ${yourAccuracy}`)
-    console.log(`There is a total of ${enemyCount} enemy and you will fight them in a row`)
-    console.log("Battle Initializing")
+    alert(`Earth has been attacked by a horde of aliens! Time to fight back. Your ship's has ${yourHull} hull strength, ${yourFirePower} firepower and accuracy of ${yourAccuracy}`)
+    alert(`There is a total of ${enemyCount} enemy and you will fight them in a row`)
+    alert("Battle Initializing")
 }
 let button=document.getElementsByClassName('button1')
 let yourStats=document.getElementsByClassName('playerStats')[0]
